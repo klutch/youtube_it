@@ -230,11 +230,12 @@ class YouTubeIt
       #
       # === Returns
       #   String: The HTML for embedding the video on your website.
-      def embed_html(width = 425, height = 350)
+      def embed_html(width = 425, height = 350, allow_fullscreen = false)
         <<EDOC
 <object width="#{width}" height="#{height}">
   <param name="movie" value="#{embed_url}"></param>
   <param name="wmode" value="transparent"></param>
+  #{"<param name=\"allowFullScreen\" value=\"true\"></param>" if allow_fullscreen}
   <embed src="#{embed_url}" type="application/x-shockwave-flash"
    wmode="transparent" width="#{width}" height="#{height}"></embed>
 </object>
